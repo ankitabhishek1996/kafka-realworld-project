@@ -1,0 +1,15 @@
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+#    consumer:
+#      group-id: my-group-id
+#      auto-offset-reset: earliest # Start reading at the earliest message
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      enable-auto-commit: true # Enable automatic offset commits
+#      auto-commit-interval: 100ms # Interval between two consecutive offset commits
+
