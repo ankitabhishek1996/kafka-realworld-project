@@ -1,11 +1,12 @@
 package com.ankit.springboot;
 
 
+import com.ankit.springboot.entity.WikimediaDataRepository;
+import com.ankit.springboot.repository.I_WikimediaRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
-
 
 
 @Service
@@ -13,9 +14,19 @@ public class KafkaDatabaseConsumer {
 
     private Logger LOGGER = LoggerFactory.getLogger(KafkaDatabaseConsumer.class);
 
+    private I_WikimediaRepo wikimediaRepo;
+
+    public KafkaDatabaseConsumer(I_WikimediaRepo wikimediaRepo) {
+        this.wikimediaRepo = wikimediaRepo;
+    }
+
     @KafkaListener(topics = "wikimedia_recentchange", groupId = "myGroup")
-    public  void consume(String eventMessage){
-        LOGGER.info(String.format("Event message recieved -> %s",eventMessage));
+    public void consume(String eventMessage) {
+        LOGGER.info(String.format("Event message recieved -> %s", eventMessage));
+        WikimediaDataRepository wikimediaData = new WikimediaDataRepository();
+        wikimediaData.setWikiEventData(eventMessage);
+        wikimediaRepo.save(wikimediaData);
+
 
     }
 }

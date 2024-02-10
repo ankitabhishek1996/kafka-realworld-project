@@ -1,11 +1,25 @@
-spring:
-  kafka:
-    bootstrap-servers: localhost:9092 # Kafka cluster address
-    consumer:
-      group-id: myGroup
-      auto-offset-reset: earliest # Start reading at the earliest message
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      enable-auto-commit: true # Enable automatic offset commits
-      auto-commit-interval: 100ms # Interval between two consecutive offset commits
+  spring:
+    kafka:
+      bootstrap-servers: localhost:9092 # Kafka cluster address
+      consumer:
+        group-id: myGroup
+        auto-offset-reset: earliest # Start reading at the earliest message
+        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        enable-auto-commit: true # Enable automatic offset commits
+        auto-commit-interval: 100ms # Interval between two consecutive offset commits
+
+    datasource:
+      url: jdbc:mysql://localhost:3306/wikimedia
+      username: root
+      password: "@Aspirine1"
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    jpa:
+      properties:
+        hibernate:
+          format_sql: true
+          dialect: org.hibernate.dialect.MySQL8Dialect
+      hibernate:
+        ddl-auto: update
+      show-sql: true
 
