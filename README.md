@@ -1,3 +1,5 @@
+command used during this project
+
 mvn archetype:generate -DgroupId=com.ankit.springboot -DartifactId=kafka-consumer-wikimedia -DinteractiveMode=false
 
 
