@@ -8,7 +8,4 @@ spring:
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       enable-auto-commit: true # Enable automatic offset commits
       auto-commit-interval: 100ms # Interval between two consecutive offset commits
-    # Additional global properties
-    properties:
-      security.protocol: PLAINTEXT # Adjust this based on your Kafka cluster's security setup (e.g., SASL_SSL for secured clusters)
-      # Other global properties can be added here
+
